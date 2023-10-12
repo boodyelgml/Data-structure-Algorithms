@@ -1,81 +1,49 @@
 package com.example.DataStructureAndAlgorithms.nonlinear.graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Graph {
-    private Map<String, Node> nodes = new HashMap<>();
-    private Map<Node, List<Node>> vertices = new HashMap<>();
-
-    public void addNode(String label) {
-        Node node = new Node(label);
-        nodes.putIfAbsent(label, node);
-        vertices.putIfAbsent(node, new ArrayList<>());
+    private final Map<String, City> cities = new HashMap<>();
+    private final Map<City, Set<City>> routes = new HashMap<>();
+    public void addCity(String cityName) {
+        City city = new City(cityName);
+        cities.putIfAbsent(cityName, city);
+        routes.putIfAbsent(city, new HashSet<>());
     }
-
-    public void removeNode(String label) throws IllegalAccessException {
-        Node node = nodes.get(label);
-        if (node == null) {
+    public void addRoute(String from, String to) throws IllegalAccessException {
+        City fromCity = cities.get(from);
+        City toCity = cities.get(to);
+        if (fromCity == null || toCity == null) {
             throw new IllegalAccessException();
         }
 
-        for (Node obj : vertices.keySet()) {
-            vertices.get(obj).remove(node);
-        }
+        Set<City> cityRoutes = routes.get(fromCity);
 
-        vertices.remove(node);
-        nodes.remove(node);
+        cityRoutes.add(toCity);
     }
-
-    public void addEdge(String from, String to) throws IllegalAccessException {
-        Node fromNode = nodes.get(from);
-        Node toNode = nodes.get(to);
-
-        if (fromNode == null) {
+    public void removeCity(String cityName) throws IllegalAccessException {
+        City city = cities.get(cityName);
+        if (city == null) {
             throw new IllegalAccessException();
         }
 
-        if (toNode == null) {
-            throw new IllegalAccessException();
+        for (City node : routes.keySet()) {
+            routes.get(node).remove(city);
         }
-
-        vertices.get(fromNode).add(toNode);
+        cities.remove(cityName);
+        routes.remove(city);
     }
-
-    public void removeEdge(String from, String to) throws IllegalAccessException {
-        Node fromNode = nodes.get(from);
-        Node toNode = nodes.get(to);
-
-        if (fromNode == null) {
-            throw new IllegalAccessException();
+    public void print(String cityName) {
+        StringBuilder toPrint = new StringBuilder("city " + cityName + " connected with ");
+        City city = cities.get(cityName);
+        if (city == null) {
+            throw new IllegalStateException();
         }
 
-        if (toNode == null) {
-            throw new IllegalAccessException();
+        Set<City> cityRoutes = routes.get(city);
+        for (City c : cityRoutes) {
+            toPrint.append(", " + c.getLabel()).toString();
         }
-
-        vertices.get(fromNode).remove(toNode);
+        System.out.println(toPrint);
     }
-
-    public void print() {
-        for (var x : vertices.keySet()) {
-            if (vertices.get(x).size() > 0)
-                System.out.println(x + " is connected to " + vertices.get(x));
-        }
-    }
-
-
-//    private void traverse(String node) {
-//        if (!nodes.containsKey(node)) {
-//            return;
-//        }
-//        traverse(node, new HashSet<>());
-//    }
-//
-//    private void traverse(String node, HashSet set) {
-//
-//    }
 }
