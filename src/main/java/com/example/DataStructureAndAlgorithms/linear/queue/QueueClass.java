@@ -50,10 +50,10 @@ public class QueueClass {
 
     public void reverse(Queue<Integer> queue) {
         Stack<Integer> stack = new Stack<>();
-        while (queue.size() != 0) {
+        while (!queue.isEmpty()) {
             stack.push(queue.remove());
         }
-        while (stack.size() != 0) {
+        while (!stack.isEmpty()) {
             queue.add(stack.pop());
         }
         System.out.println(Arrays.toString(queue.toArray()));

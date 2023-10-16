@@ -4,7 +4,6 @@ public class LinkedList<T> {
     private Node<T> head;
     private Node<T> tail;
     private int size = 0;
-
     public void addLast(T item) {
         Node<T> tNode = new Node<>(item);
         if (isEmpty())
@@ -15,7 +14,6 @@ public class LinkedList<T> {
         }
         size++;
     }
-
     public void addFirst(T item) {
         Node<T> tnode = new Node<>(item);
         if (isEmpty()) {
@@ -26,9 +24,8 @@ public class LinkedList<T> {
         }
         size++;
     }
-
     public int indexOf(T item) {
-        Integer index = 0;
+        int index = 0;
         Node<T> current = head;
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("Linked List is empty");
@@ -40,15 +37,12 @@ public class LinkedList<T> {
         }
         return -1;
     }
-
     public boolean isContains(T item) {
         return indexOf(item) != -1;
     }
-
     private Boolean isEmpty() {
         return head == null;
     }
-
     public void removeFirst() {
         if (head == tail) {
             head = tail = null;
@@ -60,7 +54,6 @@ public class LinkedList<T> {
         }
         size--;
     }
-
     public void removeLast() {
         Node<T> current = head;
         Node beforeLast = new Node<>();
@@ -76,7 +69,6 @@ public class LinkedList<T> {
         }
         size--;
     }
-
     public void print() {
         Node<T> current = head;
         while (current != null) {
@@ -84,11 +76,9 @@ public class LinkedList<T> {
             current = current.getNext();
         }
     }
-
     public int size() {
         return size;
     }
-
     public int[] toArray() {
         int[] arr = new int[size];
         var index = 0;
@@ -100,7 +90,6 @@ public class LinkedList<T> {
         }
         return arr;
     }
-
     public void reverse() {
 
         Node<T> current = head.getNext();
@@ -118,7 +107,6 @@ public class LinkedList<T> {
         head = previous;
 
     }
-
     public int findKthFromEnd(int k) {
         Node<T> a = head;
         Node<T> b = head;
@@ -133,7 +121,6 @@ public class LinkedList<T> {
         return (int) a.getValue();
 
     }
-
     public void findMiddle() {
         Node<T> a = head;
         Node<T> b = tail;

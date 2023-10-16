@@ -1,5 +1,6 @@
 package com.example.DataStructureAndAlgorithms.nonlinear.graph;
 
+
 public class City {
     String label;
 
@@ -9,9 +10,5 @@ public class City {
 
     public String getLabel() {
         return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
     }
 }

@@ -11,11 +11,9 @@ public class QueueWithStack {
         stack = new Stack<>();
         reversedStack = new Stack<>();
     }
-
     public void enqueue(Integer number) {
         stack.push(number);
     }
-
     public void dequeue() {
         if (isEmpty()) {
             throw new IllegalArgumentException("البتاعة فاضية يا اعمى");
@@ -31,11 +29,9 @@ public class QueueWithStack {
             stack.push(reversedStack.pop());
         }
     }
-
     public Boolean isEmpty() {
-        return stack.size() == 0;
+        return stack.isEmpty();
     }
-
     @Override
     public String toString() {
         return stack.toString();

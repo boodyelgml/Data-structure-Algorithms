@@ -8,7 +8,6 @@ import java.util.List;
 @Data
 public class Tries {
     Node root = new Node(' ');
-
     public void insert(String word) throws IllegalAccessException {
         if (word == null) {
             throw new IllegalAccessException();
@@ -23,7 +22,6 @@ public class Tries {
         }
         current.setLastChar(true);
     }
-
     public boolean search(String word) throws IllegalAccessException {
         if (word == null) {
             throw new IllegalAccessException();
@@ -38,11 +36,9 @@ public class Tries {
         }
         return current.isLastChar();
     }
-
     public void traverse() {
         traverse(root);
     }
-
     private void traverse(Node root) {
         System.out.println(root.getValue());
 
@@ -51,12 +47,9 @@ public class Tries {
             traverse(node);
         }
     }
-
-
     public void remove(String word) {
         remove(root, word, 0);
     }
-
     private void remove(Node root, String word, int index) {
         if (index == word.length()) {
             root.setLastChar(false);
@@ -72,8 +65,6 @@ public class Tries {
             root.getChildren().remove(node);
         }
     }
-
-
     public List<String> autoComplete(String word) throws IllegalAccessException {
         if (word == null) {
             throw new IllegalAccessException();
@@ -84,8 +75,6 @@ public class Tries {
         findWords(lastNode, word, words);
         return words;
     }
-
-
     private void findWords(Node root, String word, List<String> words) {
         if (root.isLastChar) {
             words.add(word);
@@ -95,7 +84,6 @@ public class Tries {
             findWords(child, word + child.getValue(), words);
         }
     }
-
     private Node lastNode(Node root, String word) {
         Node current = root;
         for (char ch : word.toCharArray()) {

@@ -9,7 +9,6 @@ public class AVLtree {
     public void insert(Integer value) {
         this.root = insert(root, value);
     }
-
     private AVLNode insert(AVLNode root, Integer value) {
         if (root == null) {
             return new AVLNode(value);
@@ -27,8 +26,7 @@ public class AVLtree {
         balance(root);
         return root;
     }
-
-    public void balance(AVLNode root) {
+    private void balance(AVLNode root) {
 
         if (root.balanceFactor > 1) {
             root.heavyDirection = "left";
@@ -48,7 +46,6 @@ public class AVLtree {
             }
         }
     }
-
     private AVLNode rotateRight(AVLNode root) {
         AVLNode newRoot = root.leftChild;
         root.leftChild = newRoot.rightChild;
@@ -59,9 +56,8 @@ public class AVLtree {
 
         return newRoot;
     }
-
     private AVLNode rotateLeft(AVLNode root) {
-        var newRoot = root.rightChild;
+        AVLNode newRoot = root.rightChild;
         root.rightChild = newRoot.leftChild;
         newRoot.leftChild = root;
 
@@ -70,8 +66,7 @@ public class AVLtree {
 
         return newRoot;
     }
-
-    public int height(AVLNode node) {
+    private int height(AVLNode node) {
         if (node == null) {
             return 0;
         }
