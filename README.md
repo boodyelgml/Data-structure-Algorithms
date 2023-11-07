@@ -7,7 +7,7 @@
 - Stack
 - Hashtable
 
-<h3>Non-Linear Data-structure</h3>
+### Non-Linear Data-structure
 - Binary tree
 - AVL tree
 - Heap
@@ -15,7 +15,7 @@
 - Graph
 - Undirected graph
 
-<h3>Searching Algorithms</h3>
+### Searching Algorithms
 - Binary Search
 - Linear Search
 - Ternary Search
