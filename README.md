@@ -1,7 +1,6 @@
-<h2>This repo covers all data-structure and algorithms explained in mosh hamadani course</h2>
+### This repo covers all data-structure and algorithms explained in mosh hamadani course
 
- 
-<h3>Linear Data-structure</h3>
+### Linear Data-structure
 - Array
 - List
 - Queue
