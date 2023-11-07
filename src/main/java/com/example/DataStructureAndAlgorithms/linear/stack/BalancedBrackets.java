@@ -27,7 +27,7 @@ public class BalancedBrackets {
             }
         }
 
-        return characters.size() == 0;
+        return characters.isEmpty();
 
     }
 
